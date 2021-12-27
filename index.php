@@ -8,6 +8,10 @@
   }
   if (isset($_GET['logout']))
    {
+	$usern=$_SESSION['username'];
+	$db = mysqli_connect('localhost', 'root', '', 'training project');
+	$sql = "UPDATE 'users' SET 'status'=0 WHERE 'username'='$usern'";
+	$result = $db->query($sql);
   	session_destroy();  //destroy session if user clicks on Logout
   	unset($_SESSION['username']);
   	header("location: login.php");

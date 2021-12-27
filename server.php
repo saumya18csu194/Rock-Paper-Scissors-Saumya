@@ -60,8 +60,8 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = password_hash($password_1,PASSWORD_DEFAULT);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO users (username, email,password,age) 
-  			  VALUES('$username', '$email', '$password','$age')";
+  	$query = "INSERT INTO users (username, email,password,age,login_time,status) 
+  			  VALUES('$username', '$email', '$password','$age',current_timestamp(), true)";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
@@ -69,7 +69,6 @@ if (isset($_POST['reg_user'])) {
   }
 }
 
-// LOGIN USER
 
 if (isset($_POST['login_user']))
  {
@@ -107,17 +106,8 @@ if (isset($_POST['login_user']))
       {
   	  $_SESSION['username'] = $username;
   	  $_SESSION['success'] = "You are now logged in";
-      $_SESSION['LAST_ACTIVITY']=time();
-      $id=$_SESSION["uid"];
-      $sql = "SELECT * FROM `bloggerpost`.`users_activity` WHERE `user_id`='$id'";
-       $result = $con->query($sql);
-      if($result->num_rows==0){
-      $sql = "INSERT INTO `bloggerpost`.`users_activity` (`user_id`, `last_access_At`, `is_online`) VALUES ('$id',current_timestamp(), true);";
-      $result = $con->query($sql);
-      if($result == true){
-       echo "<script> location.href='index.php'; </script>";
-                  }
-
+  	  header('location: index.php');
+      
   	  }
     else 
     {
