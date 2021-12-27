@@ -1,12 +1,14 @@
 <?php 
   session_start(); 
 
-  if (!isset($_SESSION['username'])) {
+  if (!isset($_SESSION['username'])) 
+  {
   	$_SESSION['msg'] = "You must log in first";
   	header('location: login.php');
   }
-  if (isset($_GET['logout'])) {
-  	session_destroy();
+  if (isset($_GET['logout']))
+   {
+  	session_destroy();  //destroy session if user clicks on Logout
   	unset($_SESSION['username']);
   	header("location: login.php");
   }
@@ -39,18 +41,18 @@
     <!-- logged in user information -->
     <?php  if (isset($_SESSION['username'])) : ?>
     	<p>Welcome to Rock Paper Scissor Game  <strong><?php echo $_SESSION['username']; ?></strong></p>
-		<button type="button" class="btn" style="margin-bottom: 30px"  >Click Here to Start the Game !</button>
-
-		<button type="button" class="btn" style="margin-bottom: 30px" >Click Here to View Active Players !</button>
-
-		<button type="button" class="btn"  style="margin-bottom: 30px">Click Here to View LeaderBoard !</button>
-         <a href = "changePassword.php">
-		<button type="button" class="btn"  style="margin-bottom: 30px">Click Here to Change Password !</button></a>
-
-
-
+		<a href = "game.php">
+    
+		<button type="button" class="homepagebutton" style="margin-bottom: 20px"  >Click Here to Start the Game !</a>
+		<br>
+		<button type="button" class="homepagebutton" style="margin-bottom: 20px" >Click Here to View LeaderBoard</button>
+        <a href = "showdetail.php">
+		<br>
+		<button type="button" class="homepagebutton"  style="margin-bottom: 20px">Click Here to View Profile !</button></a>
+	    </br>
     	<p> <a href="index.php?logout='1'" style="color: red;">Logout</a> </p>
-    <?php endif ?>
+	
+   <?php endif ?>
 </div>
 </body>
 </html>

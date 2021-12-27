@@ -1,32 +1,8 @@
 <?php include('server.php');
 
 
-$username =$_SESSION['username'];/* userid of the user */
 
-$oldpass = "";
 
-if(count($_POST)>0) {
-$result = mysqli_query($db,"SELECT password from Users where username= '$username' ");
-$row=mysqli_fetch_array($result);
-if (mysqli_num_rows($result) > 0) {
-
-    while ($row = mysqli_fetch_assoc($result)) {
-
-        $oldpass = $row['password'];
-
-    }
-
-}
-if($_POST["newpassword"] == $oldpass  )
-{
-mysqli_query($db,"UPDATE Users set password='" . $_POST["newPassword"] . "' where username= '$username' ");
-
-$message = "Password Changed Sucessfully";
-}
-else{
- $message = "Password is not correct";
-}
-}
 ?>
 
 <!DOCTYPE html>
@@ -40,20 +16,21 @@ else{
   	<h2>Change Password</h2> 
   </div>
 	 
-  <form method="post" action="changePassword.php">
+  <form method="post" action="changepassword.php">
   	<?php include('errors.php'); ?>
   	<div class="input-group">
   		<label>Old Password</label>
-  		<input type="password" name="password" >
+  		<input type="password" name="password"  required>
   	</div>
   	<div class="input-group">
   		<label>New Password</label>
-  		<input type="password" name="newpassword">
+  		<input type="password" name="newpassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" required>
   	</div>
   	<div class="input-group">
-  		<button type="submit" class="btn" name="change">Change Password</button>
+  		<button type="submit" class="btn" name="change" >Change Password</button>
   	</div>
-
+	  <p>
+  			 <a href="showdetail.php">Go Back</a> <!-- Redirect to Home Page -->
   </form>
 </body>
 </html>
