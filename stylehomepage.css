@@ -1,0 +1,65 @@
+* {
+    margin: 0px;
+    padding: 0px;
+  
+  }
+  body {
+    font-size: 120%;
+    background-image: url('pictures/wallpaper.jpeg') ;
+   
+  }
+  
+  .header {
+    width: 100%;
+    
+    color: #131537;
+    background: #5F9EA0;
+    text-align: center;
+    border: 1px solid #B0C4DE;
+    border-bottom: none;
+    
+    padding: 20px;
+  }
+  form, .content {
+    width: 100%;
+    margin: 0px auto;
+    padding: 20px;
+    border: 1px solid #B0C4DE;
+    background: white;
+    border-radius: 0px 0px 10px 10px;
+  }
+
+
+  .homepagebutton {
+    
+      padding: 10px;
+      font-size: 25px;
+      color: white;
+      background: #5F9EA0;
+      border: none;
+      border-radius: 5px;
+      margin-top:16px;
+      display:block;
+      width:460px;
+      text-align: center;
+      justify-content: center;
+      margin: 0 auto;
+
+  }
+ 
+  .error {
+    width: 92%; 
+    margin: 0px auto; 
+    padding: 10px; 
+    border: 1px solid #a94442; 
+    color: #a94442; 
+    background: #131537;
+    border-radius: 5px; 
+    text-align: left;
+  }
+  .success {
+    color: #3c763d; 
+    background:rgb(255, 255, 255);
+    float:left;
+    margin-bottom: 20px;
+  }

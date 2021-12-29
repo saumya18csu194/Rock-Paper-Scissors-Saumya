@@ -8,9 +8,22 @@ $errors = array();
 
 // connect to the database
 $db = mysqli_connect('localhost', 'root', '', 'training project');  #mysqli_connect(host, username, password, dbname)
+/*
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1200))
+{  
+  session_unset();    
+  session_destroy();   
+  header('location: login.php');
+}
+else{
+  $usern = $_SESSION["username"];
+  $_SESSION['LAST_ACTIVITY'] = time();
+  $sql = "UPDATE users SET 'login_time'=current_timestamp(), 'status'=true WHERE 'username'='$usern'";
+  $result = $db->query($sql);
 
-
-
+  $db->close();
+}
+*/
 // REGISTER USER
 if (isset($_POST['reg_user'])) {
   // receive all input values from the form
@@ -60,9 +73,11 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = password_hash($password_1,PASSWORD_DEFAULT);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO users (username, email,password,age,login_time,status) 
-  			  VALUES('$username', '$email', '$password','$age',current_timestamp(), true)";
-  	mysqli_query($db, $query);
+  //	$query = "INSERT INTO 'users' (username, email,password,age,login_time,status) 
+  			//  VALUES('$username', '$email', '$password','$age',current_timestamp(),'1')";
+    $query="INSERT INTO `users`(`username`, `email`, `password`, `Age`, `login_time`) VALUES ('$username','$email','$password','$age',current_timestamp())";
+    $result=mysqli_query($db, $query);
+    
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
   	header('location: index.php');
@@ -104,8 +119,12 @@ if (isset($_POST['login_user']))
     
     if($verify)
       {
+      
   	  $_SESSION['username'] = $username;
-  	  $_SESSION['success'] = "You are now logged in";
+  	 
+      $usern=$_SESSION['username'];
+      $sql_active="UPDATE `users` SET `status`='1' WHERE username='$usern' ";
+      $result_active = mysqli_query($db, $sql_active);
   	  header('location: index.php');
       
   	  }
@@ -144,17 +163,32 @@ if($results->num_rows==0){
   
 #$row = mysql_fetch_array($results);
 $password1=$_POST['password'];
+$passwordnew=$_POST['newpassword'];
+$passwordnewconfirm=$_POST['newconfirmpassword'];
 $verify=password_verify($password1,mysqli_fetch_array( $results )['password']);
 $npassword = password_hash($_POST['newpassword'],PASSWORD_DEFAULT);
-  
-if ($verify)
+
+
+if(preg_match("#(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}#", $passwordnew)!=1) {array_push($errors, "Password requires minimum eight characters, at least one uppercase letter, one lowercase letter and one number");}
+
+
+if ($verify )
 {
-mysqli_query($db,"UPDATE users set password='" . $npassword . "' where username= '$username' ");
-$_SESSION['success'] = "Password Changed";
+  if ($passwordnew!=$passwordnewconfirm) 
+{
+array_push($errors, "The two passwords do not match");
 }
 else
 {
-  array_push($errors, "Password is not correct");
+mysqli_query($db,"UPDATE users set password='" . $npassword . "' where username= '$username' ");
+
+echo "<script >alert('Password Changed') </script>";
+$_SESSION['success'] = "Password Changed";
+header('location: index.php');
+}}
+else
+{
+  array_push($errors, "Original Password is not correct");
 }
 }
 ?>

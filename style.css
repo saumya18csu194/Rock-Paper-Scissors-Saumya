@@ -6,29 +6,65 @@
 body {
   font-size: 120%;
   background:#131537  ;
+  background-image: url('pictures/wallpaper.jpeg') ;
 }
 
 .header {
   width: 30%;
-  margin: 50px auto 0px;
-  color: #131537;
-  background: #5F9EA0;
+  /* margin: 50px auto 0px; */
+  margin:auto;
+  margin-top: 160px;
+  color:white;
+  background:black;
   text-align: center;
-  border: 1px solid #B0C4DE;
+  border: 2px solid black;
   border-bottom: none;
   border-radius: 10px 10px 0px 0px;
   padding: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,.3);
 }
 form, .content {
   width: 30%;
   margin: 0px auto;
   padding: 20px;
-  border: 1px solid #B0C4DE;
+  border: 2px solid black;
   background: white;
   border-radius: 0px 0px 10px 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,.3);
 }
 .input-group {
   margin: 10px 0px 10px 0px;
+  
+}
+.tooltip {
+  margin: 10px 0px 10px 0px;
+  position: relative;
+  display: inline-block;
+  
+}
+/* Tooltip text */
+.tooltip .tooltiptext {
+  margin: 10px 0px 10px 0px;
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text  */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.input-group .tooltip {
+
+width:120px;
 }
 .input-group label {
   display: block;
@@ -54,7 +90,7 @@ form, .content {
 }
 .homepagebutton {
   padding: 10px;
-  font-size: 15px;
+  font-size: 18px;
   color: white;
   background: #5F9EA0;
   border: none;
@@ -63,6 +99,7 @@ form, .content {
   width:100%;
 }
 
+       
 .error {
   width: 92%; 
   margin: 0px auto; 

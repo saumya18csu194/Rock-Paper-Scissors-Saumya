@@ -1,9 +1,6 @@
 <?php
 
-
-
 include 'server.php';
-
 
 $usern=$_SESSION['username'];
 $sql = "SELECT * FROM users WHERE username='$usern' ";
@@ -15,178 +12,111 @@ if ($result->num_rows > 0) {
  $_SESSION['username'] = $row['username'];
  $_SESSION['email'] = $row['email'];
  $_SESSION['Age'] = $row['Age'];
+ $_SESSION['score'] = $row['score'];
 }
-
 
 ?>
 
+<!DOCTYPE html>
 <html>
-
 <head>
-
- <title>details</title>
-
-
- <link rel="stylesheet" type="text/css"
-
-  href="style.css">
-
-</head>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+ body {
+   font-family: Mali;
+   background
+   padding: 48px;
+   text-align: center;
+   color: white;
+   background-image: url('pictures/wallpaper.jpeg') ;
+}
 
- body{
+#card {
+   background: #2e1818;
 
+   border-radius: 6px;
+   display: inline-block;
+   box-shadow: 8px 20px 25px rgba(33, 12, 12, 1);
+   width: 483px;
+   padding-top: 15px;
+   padding-bottom: 15px;
+   padding-left: 13px;
+   padding-right: 13px;
+}
 
+.profile {
+  
+   padding: 5px;
+   border-radius: 4px;
+}
 
-background-size: cover;
+.name-header {
+   font-size: 36px;
+   font-weight: 700;
+}
 
-background-attachment: fixed;
+#name {
+   font-family: Mali;
+   color: white;
+   font-weight: 200;
+}
 
- }
+#new {
+   font-size: 29px;
+}
 
-
-
- .content{
-
-background: #727a8f;
-
-;
-
-width: 50%;
-
-padding: 30px;
-
- margin: 10px auto;
-
-font-family: calibri;
-
-border-radius: 8px;
-
- opacity: 80%;
-
+#divider {
+   border-top: 1.3px solid darkgray;
+   margin-top: 5px;
+   margin-bottom: 5px;
+   width: 456px;
+   text-align: center;
+   display: inline-block;
 }
 
 
 
- p{
-
- font-size: 25px;
-
- color: black;
-
- }
-
-table {
-
- margin: 0 auto;
-
- font-size: large;
-
- border: 1px solid black;
-
- }
-
-
-
- h1 {
-
- text-align: center;
-
- color: #006600;
-
-font-size: xx-large;
-
-font-family: 'Gill Sans', 'Gill Sans MT',
-
-' Calibri', 'Trebuchet MS', 'sans-serif';
+.preview {
+   text-decoration: none;
+   font-size: 15px;
+   color: white;
+   font-family: "Comic Neue", sans-serif;
+   padding: 4px 8px 4px 8px;
+   border-radius: 6px;
 }
 
-
-
-td {
-
- background-color: #E4F5D4;
- border: 1px solid black;
-
- }
-
-
-
- th,
-
- td {
-
- font-weight: bold;
-
- border: 1px solid black;
-
-padding: 10px;
-
- text-align: center;
-
- }
-
-
-
- td {
-
-font-weight: lighter;
-
+.material-icons-two-tone {
+   font-family: "Material Icons Two Tone";
+   font-weight: normal;
+   filter: invert(0.3) sepia(1) saturate(6) hue-rotate(321deg);
+   font-style: normal;
+   flex-direction: row;
+   font-size: 28px;
+   display: inline-block;
 }
 
-
-
- </style>
-
+</style>
+</head>
 <body>
 
-<br><br><br>
+<h2>USER PROFILE</h2>
+<div id="card"><img class="profile" src="pictures/images.png" width="90"><br>
+   <div class="name-header"><?php echo $_SESSION['username'];?></div>
+ 
+   <div id="name"><?php echo $_SESSION['email'];?></div>
+   <br>
 
-<div class="content">
+   <div id="new">AGE : <?php echo $_SESSION['Age'];?></div>
+   <div id="divider"></div>
+   <div id="new">SCORE : <?php echo $_SESSION['score'];?></div>
+   <div id="divider"></div>
+  
 
 
-<h1>YOUR DETAILS</h1>
+<a href="changepassword.php" style="font-size: 20px" >Change Password</a> 
 
-<br><br>
-
-
-
-<TABLE>
-
- <TR>
-
-<TD><h4>User Name</h4></TD>
-
- <TD><?php echo $_SESSION['username'];?></TD>
-
-</TR>
-
-<TR>
-
- <TD><h4>Email address</h4></TD>
-
-<TD><?php echo $_SESSION['email'];?></TD>
-
-</TR>
-
-<TR>
-
- <TD><h4>Age</h4></TD>
-
- <TD><?php echo $_SESSION['Age'];?></TD>
-
-</TR>
-
-</TABLE>
 <br>
-Change Password <a href="changepassword.php">Change Password</a> 
-</p>
-<p>
-Go back<a href="index.php">Home Page</a> 
-
-</div>
-
+</br>
+<a href="index.php" style="font-size: 20px">Go back to Home Page</a> 
 </body>
-
-</html>
+</html> 

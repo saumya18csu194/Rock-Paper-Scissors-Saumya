@@ -1,9 +1,4 @@
-<?php include('server.php');
-
-
-
-
-?>
+<?php include('server.php');?>
 
 <!DOCTYPE html>
 <html>
@@ -26,6 +21,10 @@
   		<label>New Password</label>
   		<input type="password" name="newpassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" required>
   	</div>
+  	<div class="input-group">
+  		<label>Confirm New Password</label>
+  		<input type="password" name="newconfirmpassword"  required>
+  	</div>	
   	<div class="input-group">
   		<button type="submit" class="btn" name="change" >Change Password</button>
   	</div>
