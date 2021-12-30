@@ -9,6 +9,7 @@ $result = mysqli_query($db, $sql);
 if ($result->num_rows > 0) {
 
  $row = mysqli_fetch_assoc($result);
+ //retrieve user details from database and store
  $_SESSION['username'] = $row['username'];
  $_SESSION['email'] = $row['email'];
  $_SESSION['Age'] = $row['Age'];
@@ -27,12 +28,12 @@ if ($result->num_rows > 0) {
    background
    padding: 48px;
    text-align: center;
-   color: white;
+   color: black;
    background-image: url('pictures/wallpaper.jpeg') ;
 }
 
 #card {
-   background: #2e1818;
+   
 
    border-radius: 6px;
    display: inline-block;
@@ -42,10 +43,17 @@ if ($result->num_rows > 0) {
    padding-bottom: 15px;
    padding-left: 13px;
    padding-right: 13px;
+   background-color: cadetblue;
+   color:black;
 }
-
+h2 
+{
+    background-color: beige;
+    width: 30%;
+    margin: auto;
+}
 .profile {
-  
+   
    padding: 5px;
    border-radius: 4px;
 }
@@ -74,8 +82,6 @@ if ($result->num_rows > 0) {
    display: inline-block;
 }
 
-
-
 .preview {
    text-decoration: none;
    font-size: 15px;
@@ -98,25 +104,25 @@ if ($result->num_rows > 0) {
 </style>
 </head>
 <body>
-
+<br><br>
 <h2>USER PROFILE</h2>
+<br><br>
 <div id="card"><img class="profile" src="pictures/images.png" width="90"><br>
-   <div class="name-header"><?php echo $_SESSION['username'];?></div>
+   <div class="name-header"><?php echo $_SESSION['username'];?></div>  <!-- Display Username -->
  
-   <div id="name"><?php echo $_SESSION['email'];?></div>
+   <div id="name"><?php echo $_SESSION['email'];?></div>  <!-- Display Email -->
    <br>
 
-   <div id="new">AGE : <?php echo $_SESSION['Age'];?></div>
+   <div id="new">AGE : <?php echo $_SESSION['Age'];?></div>     <!-- Display Age -->
    <div id="divider"></div>
-   <div id="new">SCORE : <?php echo $_SESSION['score'];?></div>
+   <div id="new">SCORE : <?php echo $_SESSION['score'];?></div> <!-- Display Score -->
    <div id="divider"></div>
   
 
-
-<a href="changepassword.php" style="font-size: 20px" >Change Password</a> 
+<a href="changepassword.php" style="font-size: 20px" >Change Password</a>  <!-- Redirect to Change Password Page -->
 
 <br>
 </br>
-<a href="index.php" style="font-size: 20px">Go back to Home Page</a> 
+<a href="index.php" style="font-size: 20px">Go back to Home Page</a>  <!-- Redirect to Home Page -->
 </body>
 </html> 

@@ -1,13 +1,8 @@
 <?php
-  
-
-  include 'server.php';
-  // connect to the database
-  $db = mysqli_connect('localhost', 'root', '', 'training project');
-  $usern=$_SESSION['username'];
- 
-
-  
+include 'server.php';
+// connect to the database
+$db = mysqli_connect('localhost', 'root', '', 'training project');
+$usern=$_SESSION['username'];
 // SQL query to select data from database
 $sql = "SELECT * FROM users ORDER BY score DESC ";
 $result=mysqli_query($db,$sql); 
@@ -18,49 +13,63 @@ $result=mysqli_query($db,$sql);
 <head>
     <meta charset="UTF-8">
     <title>User Details</title>
-    <!-- CSS FOR STYLING THE PAGE -->
-    <style>
-        body {
- 
-  background-image: url('pictures/wallpaper.jpeg') ;
-}
-        table {
+<!-- CSS FOR STYLING THE PAGE BEGINS -->
+<style>
+         body 
+        {
+            background-image: url('pictures/wallpaper.jpeg') ;
+            background-attachment: fixed;
+        }
+        table 
+        {
             margin: 0 auto;
             font-size: large;
             border: 1px solid black;
         }
-        
-  
-        h1 {
+        h1
+        {
             text-align: center;
             color: #006600;
             font-size: xx-large;
-            font-family: 'Gill Sans', 'Gill Sans MT', 
-            ' Calibri', 'Trebuchet MS', 'sans-serif';
+            font-family: 'Gill Sans', 'Gill Sans MT',' Calibri', 'Trebuchet MS', 'sans-serif';
+            color: brown;
+            background-color: beige;
+            width: 40%;
+            margin:auto;
         }
-  
-        td {
-            background-color: #E4F5D4;
+        td
+        {
+            background-color: white;
             border: 1px solid black;
         }
-  
-        th,
-        td {
+        th
+        {
+            font-weight: bold;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            background-color: black;
+            color: white;
+            font-size: x-large;
+        }
+        td 
+        {
             font-weight: bold;
             border: 1px solid black;
             padding: 10px;
             text-align: center;
         }
   
-        td {
+        td
+        {
             font-weight: lighter;
         }
-    </style>
+</style> 
 </head>
   
 <body>
     <section>
-        <h1>LEADERBOARD</h1>
+        <div><h1>LEADERBOARD</h1></div>
         <!-- TABLE CONSTRUCTION-->
         <table>
             <tr>
@@ -82,16 +91,23 @@ $result=mysqli_query($db,$sql);
                 <td><?php echo $rows['email'];?></td>
                 <td><?php echo $rows['Age'];?></td>
                 <td><?php echo $rows['score'];?></td>
-                <td><?php echo $rows['status'];?></td>
-            </tr>
-            
+                <td><?php 
+                
+                if ($rows['status']==0)
+                {
+                    echo "<img src='pictures/offline.png' width=15px height=15px />";
+                }
+                else if ($rows['status']==1)
+                {
+                    echo "<img src='pictures/online.png' width=19px height=19px />";
+                }
+                ?></td>
+            </tr>  
             <?php
-             
                 }
              ?>
              <a href="index.php">Go back</a>
         </table>
     </section>
 </body>
-  
 </html>
