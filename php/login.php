@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Registration system PHP and MySQL</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>PHP and MySQL</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
   <div class="header">
@@ -24,7 +24,7 @@
   		<button type="submit" class="btn" name="login_user">Login</button>
   	</div>
   	<p>
-  		Not yet a member? <a href="register.php">Sign up</a> <!-- Redirect to Register Page -->
+  		Not a member yet? <a href="register.php"style="color:black">Sign up</a> <!-- Redirect to Register Page -->
   	</p>
   </form>
 </body>

@@ -9,14 +9,10 @@ $results = mysqli_query($db, $sql);
 if($results->num_rows > 0)
 {
     $row = mysqli_fetch_assoc($results);
-    $score1 = $row['score'];
-    $score1=$score1+1;
-    $query="UPDATE users SET score='$score1' WHERE username='$usern'";
+    $match1 = $row['total_match'];  //to get score from database
+    $match1=$match1+1; //update match by 1 when user plays a game
+    $query="UPDATE users SET total_match='$match1' WHERE username='$usern'";
     $result=mysqli_query($db,$query);
-    //echo $score1;
-    //echo $result;
 }
-
-//return $score;
 echo "<script>history.back()</script>"; 
 ?>

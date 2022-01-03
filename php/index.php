@@ -10,7 +10,7 @@
 <html>
 <head>
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
 <div class="header">
@@ -28,26 +28,21 @@
       	</h3>
       </div>
   	<?php endif ?>
-    <!-- logged in user information -->
+    
     <?php  if (isset($_SESSION['username'])) : ?>
-    	<p>Hi,  <strong><?php echo $_SESSION['username']; ?></strong></p>
-		<a href = "game.php">
+    <div class="animation">	
+		<p>Hi,  <strong><?php echo $_SESSION['username']; ?></strong></p> <!-- logged in user information -->
+	</div>
+		<a href = "game.php"> <!-- Start game on user click  -->
     <div>
 		<button type="button" class="homepagebutton" style="margin-bottom: 20px"  >Click Here to Start the Game !</a>
-		<a href = "leaderboard.php">
+		<a href = "leaderboard.php"> 
 		<button type="button" class="homepagebutton" style="margin-bottom: 20px" >Click Here to View LeaderBoard</button></a>
         <a href = "showdetail.php">
 		<button type="button" class="homepagebutton"  style="margin-bottom: 20px">Click Here to View Profile !</button></a>
-    	<p> <a href='logout.php' style="color: red;">Logout</a> </p>
+    	<p> <a href='logout.php' style="color: black;">Logout</a> </p> <!-- Go to logout page -->
 	</div>
    <?php endif ?>
 </div>
 </body>
 </html>
-<script>
-
-var userOnline = setInterval(function () {
-    $.get("backend/userOnline.php");
-}, 1000);
-
-</script>

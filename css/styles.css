@@ -1,13 +1,46 @@
-* {
+* /* STYLING FOR GAME */
+ {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+
   }
   
   body {
     font-family: "Barlow Condensed", sans-serif;
   }
-  
+  @keyframes fade-out-left {
+
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+}
+@keyframes fade-in-left {
+
+  0% {
+      transform: translateX(-100%);
+      opacity: 0;
+  }
+
+  100% {
+      transform: translateX(0);
+      opacity: 1;
+  }
+
+}
+   h1 span {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+        font-size:50px;
+        display: inline-block;
+        margin-right: 10px;
+        
+    }
   /* 
   -------------------------------------------------------------------------------
   HTML elements 
@@ -25,10 +58,16 @@
       #565fff 100%
     );
   }
-  
+  .intro {
+    
+
+
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size:32px;
+  }
   .scoreboard {
     width: 700px;
-    height: 150px;
+    height: 50px;
     border-radius: 15px;
     /* border: 1px solid white; */
     display: flex;
@@ -36,7 +75,7 @@
     align-items: center;
     margin-top: 50px;
   }
-  
+
   .title {
     padding-left: 30px;
   }
@@ -115,7 +154,8 @@
   
   .contest img {
     width: 275px;
-    height: 275px;
+    height: 245px;
+
   }
   
   .contest > div {
@@ -159,8 +199,14 @@
   .referee h1 {
     font-size: 45px;
     color: white;
+ 
   }
-  
+  .h1 {
+    font-size: 45px;
+    color: white;
+    height:500px;
+ 
+  }
   .computerhand {
     display: flex;
     flex-direction: column;
