@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+error_reporting(E_ERROR | E_PARSE);
 // initializing variables
 $username = "";
 $email    = "";
@@ -28,7 +28,7 @@ if (isset($_POST['reg_user'])) {
   if (empty($age)) { array_push($errors, "Age is required"); }
   if (empty($password_1)) { array_push($errors, "Password is required"); }
   
-  if ($age <= 10 ||  $age >= 100 && preg_match(('[0-1]{1}[0-9]{0,2}'),$age)!=1) //if age 
+  if ($age <= 10 ||  $age >= 100 && preg_match(('[0-1]{1}[0-9]{0,2}'),$age)!=1) //if age is not correct
   {
   	array_push($errors, "Entered Age is wrong");
   }
@@ -114,6 +114,7 @@ if (isset($_POST['login_user']))
 
 if (isset($_POST['change']))  //Change Password Request
 {
+  $username = mysqli_real_escape_string($db, $_POST['username']);
   $currentpwd = mysqli_real_escape_string($db, $_POST['password']);
   $newpwd = mysqli_real_escape_string($db, $_POST['newpassword']);
 
@@ -123,24 +124,21 @@ if (isset($_POST['change']))  //Change Password Request
   if (empty($newpwd)) {
   	array_push($errors, "New Password is required");
   }
-  $username =$_SESSION['username'];
+  
 
 $oldpass = "";
 
 $query = "SELECT password FROM users WHERE username='$username'" ;
 $results = $db->query($query);
-if($results->num_rows==0){
-
+if($results->num_rows==0)
+{
     $db->close();
-
     die("User doesn't exist!!");
-
 }
 
 $password1=$_POST['password'];
 $passwordnew=$_POST['newpassword'];
 $passwordnewconfirm=$_POST['newconfirmpassword'];
-
 $npassword = password_hash($_POST['newpassword'],PASSWORD_DEFAULT);//hash new password
 
 
@@ -165,8 +163,8 @@ if ($verify )//if old pasword is correct
     }
 }
 else //if old password is not correct
-{
+ {
   array_push($errors, "Original Password is not correct");
-}
+ }
 }
 ?>

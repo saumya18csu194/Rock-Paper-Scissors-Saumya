@@ -1,11 +1,12 @@
 <?php
 
 include 'server.php';
-
+error_reporting(E_ERROR | E_PARSE);
 $usern=$_SESSION['username'];
 $sql = "SELECT * FROM users WHERE username='$usern' ";
 
 $result = mysqli_query($db, $sql);
+
 if ($result->num_rows > 0) {
 
  $row = mysqli_fetch_assoc($result);
