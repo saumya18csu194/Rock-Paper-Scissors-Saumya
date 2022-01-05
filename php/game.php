@@ -15,7 +15,7 @@ if ($result->num_rows > 0) {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
+    
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
   </head>
@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
           <div class="score" style="margin: auto;">
           
               <p>SCORE</p>
-              <h1><?php echo $_SESSION['score'];?></h1> <!-- Display Score-->
+              <h1><?php echo $_SESSION['score']?></h1> <!-- Display Score-->
           </div>
       </div>
       <div class="referee" style="display: none;"> 

@@ -78,8 +78,6 @@ const handOptions = {
     document.getElementsByClassName('newGame')[0].style.display="block";
   };
   
-
-  
   const setDecision = (decision) => {
     document.querySelector(".decision h1").innerText = decision;
   }

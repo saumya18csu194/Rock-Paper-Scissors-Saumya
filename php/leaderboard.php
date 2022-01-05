@@ -25,7 +25,7 @@ $result=mysqli_query($db,$sql);
     <table class="leaderboard">
         <thead>
             <tr>
-            <th>Username</th>
+                <th>Username</th>
                 <th>Email</th>
                 <th>Age</th>
                 <th>Score</th>

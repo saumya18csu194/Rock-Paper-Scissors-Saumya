@@ -12,14 +12,14 @@
   </div>
 	 
   <form method="post" action="changepassword.php">
-  	<?php include('errors.php'); ?>
+  	<?php include('errors.php'); ?>       
   	<div class="input-group">
   		<label>Old Password</label>
   		<input type="password" name="password"  required>
   	</div>
   	<div class="input-group">
   		<label>New Password</label>
-  		<input type="password" name="newpassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" required>
+  		<input type="password" name="newpassword" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" required><!-- Regex pattern for at least 8 characters and include a capital letter and symbols-->
   	</div>
   	<div class="input-group">
   		<label>Confirm New Password</label>
